@@ -18,7 +18,6 @@ def calc_KI(g, beta):
 
     return katz_matrix
 
-
 def calc_GLHN(g, beta1, beta2):
     # Calculate the adjacency matrix
     adjacency_matrix = nx.adjacency_matrix(g).todense()
@@ -49,7 +48,6 @@ def calculate_plm_similarity(graph, node1, node2):
     
     return plm_similarity.item()
 
-
 def calculate_hitting_time(graph, node_x, node_y):
     adjacency_matrix = nx.adjacency_matrix(graph).todense()
     degree_matrix_inv = np.linalg.inv(np.diag(np.sum(adjacency_matrix, axis=1)))
@@ -72,7 +70,6 @@ def calculate_average_commute_time(graph, node_x, node_y):
     
     return average_commute_time
 
-
 def calculate_rooted_pagerank(graph, node_x, node_y, beta=0.85):
     # Create the transition probability matrix
     transition_matrix = nx.pagerank_matrix(graph, alpha=beta).toarray()
@@ -81,7 +78,6 @@ def calculate_rooted_pagerank(graph, node_x, node_y, beta=0.85):
     rpr_similarity = (1 - beta) * np.linalg.inv(np.eye(graph.number_of_nodes()) - beta * transition_matrix)
 
     return rpr_similarity[node_x, node_y]
-
 
 def calculate_escape_probability(graph, node_x, node_y, beta):
     # Calculate SimRank matrix using NetworkX
@@ -101,7 +97,6 @@ def calculate_escape_probability(graph, node_x, node_y, beta):
     escape_probability = q_vx_vy / (q_vx_vx * q_vy_vy - q_vx_vy_times_q_vy_vx)
 
     return escape_probability
-
 
 def random_walk_with_restart(graph, node_x, node_y, restart_prob, max_iter=100, tol=1e-6):
     # Initialize probability vectors
